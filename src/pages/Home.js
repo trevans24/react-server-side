@@ -9,7 +9,7 @@ export default class Home extends Component {
   render() {
     return (
       <div className="">
-        Home works FUCK YEAH
+        Home works FUCK YEAH!!
         <button onClick={this.handleClick}>click</button>
       </div>
     );

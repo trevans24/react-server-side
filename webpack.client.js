@@ -14,7 +14,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.js$|\.jsx$/,
         loader: 'babel-loader',
         exclude: '/node_modules/',
         options: {
@@ -22,7 +22,18 @@ module.exports = {
             '@babel/preset-react'
           ]
         }
-      }
+      },
+      {
+        test: /\.(s*)css$/,
+        loader: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.jpeg$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$|\.jpg$/,
+        loader: 'file-loader',
+        query: {
+          name: 'assets/img/[name].[ext]'
+        },
+      },
     ]
   },
   plugins: [
