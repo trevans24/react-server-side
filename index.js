@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 // Generate build with webpack
-app.use(express.static('build'));
+app.use(express.static('build/public'));
 
 app.get('*', (req, res) => {
   const context = {};
@@ -31,8 +31,17 @@ app.get('*', (req, res) => {
     res.end();
   } else {
     res.write(`
+      <!DOCTYPE html>
+        <html lang="en">
+        	<head>
+        		<title>Server Side Rendering</title>
+        	</head>
+        	<body>
+        		<div id="app">${content}</div>
+            <script src="client-build.js"></script>
+        	</body>
+        </html>
       <!doctype html>
-      <div id="app">${content}</div>
     `);
     res.end();
   }
